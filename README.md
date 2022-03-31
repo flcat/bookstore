@@ -5,8 +5,11 @@ Springboot 와 JPA를 이용하여 간단한 서점 웹 애플리케이션을 �
 ## 프로젝트 구조
 /src/main/java/shop/bookstore
   /item - Get, Post 방식을 사용하여 상품 등록 수정 
+  
   /member - 
+  
   /order - 
+  
   /utility -
 
 ## API
