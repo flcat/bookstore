@@ -34,11 +34,11 @@ public class OrderServiceTest {
     OrderRepository orderRepository;
 
     @Test
-    public void 상품주문() throws Exception {
+    public void itemOrder() throws Exception {
         //given
         Member member = createMember();
 
-        Book book = createBook("시골 JPA", 10000, 10);
+        Book book = createBook("무한의 마법사", 10000, 10);
 
 
         int orderCount = 2;
@@ -57,10 +57,10 @@ public class OrderServiceTest {
     }
 
     @Test
-    public void 주문취소() throws Exception {
+    public void orderCancel() throws Exception {
         //given
         Member member = createMember();
-        Book item = createBook("시골 JPA", 10000, 10);
+        Book item = createBook("무한의 마법사", 10000, 10);
         int orderCount = 2;
 
         Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
@@ -76,10 +76,10 @@ public class OrderServiceTest {
     }
 
     @Test(expected = NotEnoughStockException.class)
-    public void 상품주문_재고수량초과() throws Exception {
+    public void orderItem_stockQuantityOverFlow() throws Exception {
         //given
         Member member = createMember();
-        Item item = createBook("시골 JPA", 10000, 10);
+        Item item = createBook("무한의 마법사", 10000, 10);
 
         int orderCount = 11;
 
@@ -101,8 +101,8 @@ public class OrderServiceTest {
 
     private Member createMember() {
         Member member = new Member();
-        member.setName("회원1");
-        member.setAddress(new Address("서울", "강가", "123-123"));
+        member.setName("강회원");
+        member.setAddress(new Address("서울", "한남동", "123-123"));
         em.persist(member);
         return member;
     }

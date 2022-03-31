@@ -24,10 +24,10 @@ public class MemberServiceTest {
     MemberRepository memberRepository;
 
     @Test
-    public void 회원가입() throws Exception {
+    public void memberJoin() throws Exception {
         //given
         Member member = new Member();
-        member.setName("kim");
+        member.setName("KwonJaeChan");
 
         //when
         Long saveId = memberService.join(member);
@@ -37,12 +37,12 @@ public class MemberServiceTest {
     }
 
     @Test(expected = IllegalStateException.class)
-    public void 중복_회원_예외() throws Exception {
+    public void memberDuplicationCheck() throws Exception {
         //given
         Member member1 = new Member();
-        member1.setName("kim");
+        member1.setName("KwonJaeChan");
         Member member2 = new Member();
-        member2.setName("kim");
+        member2.setName("KwonJaeChan");
         //when
         memberService.join(member1);
         memberService.join(member2); //예외가 발생해야 한다!!!
