@@ -113,7 +113,7 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
 * OrderRepository
   * @RequiredArgsConstructor 
      - 초기화 되지않은 final field나 @NonNull이 붙은 field에 대해
-        생성자를 생성해 . Dependency Injection 위해서 사용했다.
+        생성자를 생성해, Dependency Injection을 위해서 사용했다.
  
   * @Repository
      - @Component을 사용해도 되지만  @Repository에 해당 Annotation의 기능이
