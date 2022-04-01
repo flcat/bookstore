@@ -13,7 +13,8 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
   
   /order - Delivery 와는 OneToOne Entity 관계를 가짐
          - findAllByString method는 동적으로 쿼리를 생성해 Entity를 검색한다.
-         - Given 절에서 test를 위한 member와 item을 만들고 When 절에서 item을 주문하고 Then 절에서 orderPrice가 올바른지, 주문 후 stockQuantity이 정확히 줄었는지 체크.
+         - Given 절에서 test를 위한 member와 item을 만들고 When 절에서 item을 주문하고,
+           Then 절에서 orderPrice가 올바른지, 주문 후 stockQuantity이 정확히 줄었는지 체크.
   
   /utility - 수량 초과로 인한 에러 메세지 처리
   
@@ -51,11 +52,15 @@ list
 
 Delivery
     
-    @Id
+  @Id
+    
     primary key 지정
-    @GeneratedValue 를 함께 사용하므로써 primary key 자동 생성
-    빠른 구현을 위해 Order와 @OneToOne 단방향 상관 관계를 갖고 (양방향의 경우 LAZY로 설정해도 EAGER로 동작할 수 있다.) fetch 전략을 LAZY로 설정하므로써
-    연관 관계에 있는 Entity 가져오지 않고 Getter 로 접근할 때 가져온다. (해당 project에서는 모든 fetch전략을 LAZY로 설정하였다.)
+  @GeneratedValue
+    
+    함께 사용하므로써 primary key 자동 생성
+    빠른 구현을 위해 Order와 @OneToOne 단방향 상관 관계를 갖고 (양방향의 경우 LAZY로 설정해도 EAGER로 동작할 수 있다.)
+    fetch 전략을 LAZY로 설정하므로써 연관 관계에 있는 Entity 가져오지 않고 Getter 로 접근할 때 가져온다.
+    (해당 project에서는 모든 fetch전략을 LAZY로 설정하였다.)
 
   @Embedded
     
