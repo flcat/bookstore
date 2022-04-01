@@ -34,8 +34,7 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
     @transactional 통해
     join() method 실행중 다른 연산이 끼어들 수 없게 함
     오류가 생긴 경우에 연산을 취소하고 rollback
-
-validateDuplicateMember를 통해 중복 회원 이름 검증.
+    validateDuplicateMember를 통해 중복 회원 이름 검증.
 
     MemberController
     create
@@ -44,12 +43,14 @@ validateDuplicateMember를 통해 중복 회원 이름 검증.
     control statement 를 통해 Error Handling
 
 list
+
     @GetMapping 통해 path 값 "members" 을 URL 에 Mapping
     model.addAttribute 를 통해 "members" 라는 이름을 갖는 Object value 추가
 
 ### order
 
 Delivery
+    
     @Id
     primary key 지정
     @GeneratedValue 를 함께 사용하므로써 primary key 자동 생성
@@ -57,33 +58,47 @@ Delivery
     연관 관계에 있는 Entity 가져오지 않고 Getter 로 접근할 때 가져온다. (해당 project에서는 모든 fetch전략을 LAZY로 설정하였다.)
 
   @Embedded
+    
     city street zipcode를 address로 묶어 가독성을 높임
 
   @Enumerated
+    
     Enum값을 문자열(EnumType.STRING)로 저장될 수 있도록 선언. 기본적으로 int 값으로 저장됨.
 
 Order
+  
   @NoArgsConstructor 
+    
     파라미터가 없는 기본 생성자를 생성
   @Entity @Table
-      Object와 Table Mapping
+     
+     Object와 Table Mapping
   @Column 
+      
       Column명 Mapping
   @OntoMany
+      
       한가지 order에 여러 상품 주문 가능하게 설정 cascade로 상위 Entity에서 하위 Entity로 모든 작업을 전파
 
 OrderRepository
-  @RequiredArgsConstructor
+ 
+ @RequiredArgsConstructor
+      
       초기화 되지않은 final field나 @NonNull이 붙은 field에 대해 생성자를 생성해 줌 Dependency Injection 위해서 사용.
-  @Repository
-      @Component을 사용해도 되지만  @Repository에 해당 Annotation의 기능이 포함되어 있고 @Repository를 적음으로 명시적으로 역할을 나타냄
+ 
+ @Repository
+     
+     @Component을 사용해도 되지만  @Repository에 해당 Annotation의 기능이 포함되어 있고 @Repository를 적음으로 명시적으로 역할을 나타냄
 
 HomeController
+  
   @slf4j
+    
     wrapper 이다. @slf4j 설정에 따라 다른 logging library를 사용할 수 있게 됨.
     때문에 log4j로 변경하는 등 migration process가 간단해짐
 
 ### test
+  
   unit test 작성
   @RunWith(SpringRunner.class)
     해당 Annotation을 이용하면 @Autowired에 해당하는 것들만 Application Context를 로딩하므로
