@@ -43,15 +43,16 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
     @Valid 를 통해 MemberForm parameter 검증
     control statement 를 통해 Error Handling
 
-list
+*list
 
     @GetMapping 통해 path 값 "members" 을 URL 에 Mapping
     model.addAttribute 를 통해 "members" 라는 이름을 갖는 Object value 추가
 
 ### order
 
-Delivery
+*Delivery
     
+  
   @Id
     
     primary key 지정
@@ -70,7 +71,7 @@ Delivery
     
     Enum값을 문자열(EnumType.STRING)로 저장될 수 있도록 선언. 기본적으로 int 값으로 저장됨.
 
-Order
+*Order
   
   @NoArgsConstructor 
     
@@ -85,7 +86,7 @@ Order
       
       한가지 order에 여러 상품 주문 가능하게 설정 cascade로 상위 Entity에서 하위 Entity로 모든 작업을 전파
 
-OrderRepository
+*OrderRepository
  
  @RequiredArgsConstructor
       
@@ -95,7 +96,7 @@ OrderRepository
      
      @Component을 사용해도 되지만  @Repository에 해당 Annotation의 기능이 포함되어 있고 @Repository를 적음으로 명시적으로 역할을 나타냄
 
-HomeController
+*HomeController
   
   @slf4j
     
