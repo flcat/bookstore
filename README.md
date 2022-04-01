@@ -76,7 +76,7 @@ HomeController
 @slf4j 설정에 따라 다른 logging library를 사용할 수 있게 됨.
 때문에 log4j로 변경하는 등 migration process가 간단해짐
 
-###test
+### test
 unit test 작성
 @RunWith(SpringRunner.class)를 사용하면 @Autowired에 해당하는 것들만 Application Context를 로딩하므로
 Junit4의 필요조건에 맞추어 사용
