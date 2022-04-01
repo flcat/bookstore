@@ -60,7 +60,7 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
     상품의 이름, 가격, 재고수량, 도서번호를 가지고 있고 상품을 주문하면 재고수량이 줄어든다.
   * ItemController
     * createForm 
-      - 상품을 등록하는 Form View를 생성.
+      - 상품을 등록하는 Form View를 생성한다.
     * create
       - View에서 입력받은 값들을 해당 상품 Entity에 전달한 뒤 items로 redirect 한다.
     * list
@@ -77,19 +77,19 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
 
 * OrderController
     * createForm 
-      - 주문하는 Form View를 생성.
+      - 주문하는 Form View를 생성한다.
     * order
       - @RequestParam으로 해당 값을 요청해 각 parameter에 넣어주고 Entity에 전달한 뒤 orders로 redirect 한다.
     * orderList
-      - 주문 목록을 model.addAttribute()를 통해 받아옴
+      - 주문 목록을 model.addAttribute()를 통해 받아온다.
     * cancelOrder
       - @PathVariable 해당 orderId로 수정된 값을 전달받고 Entity 조회 후 cancelOrder()한 뒤 orders로 redirect 한다.
 
 * Delivery
   * @Id
-     - primary key 지정
+     - primary key 지정한다.
   * @GeneratedValue    
-    - 함께 사용하므로써 primary key 자동 생성
+    - 함께 사용하므로써 primary key 자동 생성한다.
        빠른 구현을 위해 Order와 @OneToOne 단방향 상관 관계를 갖고 
        (양방향의 경우 LAZY로 설정해도 EAGER로 동작할 수 있다.)
        fetch 전략을 LAZY로 설정하므로써 연관 관계에 있는 Entity 가져오지 않고 Getter 로 접근할 때 가져온다.
@@ -102,13 +102,13 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
 
 * Order
   * @NoArgsConstructor 
-    - 파라미터가 없는 기본 생성자를 생성
+    - 파라미터가 없는 기본 생성자를 생성한다.
   * @Entity @Table
     - Object와 Table Mapping
   * @Column 
     - Column명 Mapping
   * @OntoMany
-     - 한가지 order에 여러 상품 주문 가능하게 설정 cascade로 상위 Entity에서 하위 Entity로 모든 작업을 전파
+     - 한가지 order에 여러 상품 주문 가능하게 설정 cascade로 상위 Entity에서 하위 Entity로 모든 작업을 전파한다.
 
 * OrderRepository
   * @RequiredArgsConstructor 
@@ -121,7 +121,7 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
 
 * HomeController
   * @slf4j
-     - wrapper 이다. @slf4j 설정에 따라 다른 logging library를 사용할 수 있게 .
+     - wrapper 이다. @slf4j 설정에 따라 다른 logging library를 사용할 수 있기
         때문에 log4j로 변경하는 등 migration process가 간단해졌다.
 
 ### test
@@ -131,7 +131,7 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
     Junit4의 필요조건에 맞추어 사용 가능했다.
 
 ## TO-DO
-  1. Junit4 사용해서 unit test 작성
+  1. Junit4 사용해서 더 많은 unit test 작성이 필요하다.
   2. 2022/03/30 현재는 동작을 목표로 한 order에 한가지 item만 가능하도록 구현했다. 추후 수정
   3. Valid Error 검출시 Handling 과 각종 Error 검출 및 Handling
   4. category item 간 ManyToMany OneToMany ManyToOne 으로 풀어내기
