@@ -31,22 +31,40 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
 
 ### member
 
-    MemberService
-    @transactional 통해
-    join() method 실행중 다른 연산이 끼어들 수 없게 함
-    오류가 생긴 경우에 연산을 취소하고 rollback
-    validateDuplicateMember를 통해 중복 회원 이름 검증.
+  * MemberController
+    * createForm 
+      - 회원을 등록하는 Form View를 생성.
+    * create
+      - View에서 입력받은 값들을 해당 회원 Entity에 전달한 뒤 index화면으로 redirect한다.
+      - @PostMapping 통해 path 값 "/members/new" 을 URL 에 매핑
+      -  @Valid 를 통해 MemberForm parameter 검증
+          control statement 를 통해 Error Handling
+    * list
+      - 회원 목록을 model.addAttribute()를 통해 받아옴
+      -  @GetMapping 통해 path 값 "members" 을 URL 에 Mapping
+         model.addAttribute 를 통해 "members" 라는 이름을 갖는 Object value 추가
 
-    MemberController
-    create
-    @PostMapping 통해 path 값 "/members/new" 을 URL 에 매핑
-    @Valid 를 통해 MemberForm parameter 검증
-    control statement 를 통해 Error Handling
+  * MemberService
+      @transactional 통해
+      join() method 실행중 다른 연산이 끼어들 수 없게 함
+      오류가 생긴 경우에 연산을 취소하고 rollback
+      validateDuplicateMember를 통해 중복 회원 이름 검증.
+            
 
-* list
-
-    @GetMapping 통해 path 값 "members" 을 URL 에 Mapping
-    model.addAttribute 를 통해 "members" 라는 이름을 갖는 Object value 추가
+### item
+    상품의 이름, 가격, 재고수량, 도서번호를 가지고 있고 상품을 주문하면 재고수량이 줄어든다
+    반대로 주문을 취소하면 재고가 다시 원래대로 늘어난다.
+  * ItemController
+    * createForm 
+      - 상품을 등록하는 Form View를 생성.
+    * create
+      - View에서 입력받은 값들을 해당 상품 Entity에 전달한 뒤 items로 redirect한다.
+    * list
+      - 상품 목록을 model.addAttribute()를 통해 받아옴
+    * updateItemForm
+      - itemId를 유동적으로 얻어와 Mapping 한 뒤 해당 item 의 값들을 View에 전달한다.
+    * updateItem
+      - updateItemForm에서 얻어온 값들을 수정하면 해당 itemId로 수정된 값을 전달하고 items로 redirect한다.
 
 ### order
 
@@ -90,11 +108,13 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
  
  @RequiredArgsConstructor
       
-      초기화 되지않은 final field나 @NonNull이 붙은 field에 대해 생성자를 생성해 줌 Dependency Injection 위해서 사용.
+      초기화 되지않은 final field나 @NonNull이 붙은 field에 대해
+      생성자를 생성해 줌 Dependency Injection 위해서 사용.
  
  @Repository
      
-     @Component을 사용해도 되지만  @Repository에 해당 Annotation의 기능이 포함되어 있고 @Repository를 적음으로 명시적으로 역할을 나타냄
+     @Component을 사용해도 되지만  @Repository에 해당 Annotation의 기능이
+     포함되어 있고 @Repository를 적음으로 명시적으로 역할을 나타냄
 
 * HomeController
   
