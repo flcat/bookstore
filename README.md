@@ -25,7 +25,7 @@ Springboot 와 JPA를 이용하여 간단한 서점 웹 애플리케이션을 �
 ## API
 중복이 되는 Annotation 설명은 생략 했습니다.
 
-###member
+### member
 
 MemberService
 @transactional 통해
@@ -44,7 +44,7 @@ list
 @GetMapping 통해 path 값 "members" 을 URL 에 Mapping
 model.addAttribute 를 통해 "members" 라는 이름을 갖는 Object value 추가
 
-###order
+### order
 
 Delivery
 @Id
@@ -75,9 +75,10 @@ HomeController
 @slf4j 설정에 따라 다른 logging library를 사용할 수 있게 됨.
 때문에 log4j로 변경하는 등 migration process가 간단해짐
 
-###UnitTest
-
-
+###test
+unit test 작성
+@RunWith(SpringRunner.class)를 사용하면 @Autowired에 해당하는 것들만 Application Context를 로딩하므로
+Junit4의 필요조건에 맞추어 사용
 
 ## TO-DO
 1. xxx 사용해서 unit test 작성
