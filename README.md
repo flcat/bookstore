@@ -82,11 +82,8 @@ unit test 작성
 Junit4의 필요조건에 맞추어 사용
 
 ## TO-DO
-1. xxx 사용해서 unit test 작성
+1. Junit4 사용해서 unit test 작성
 2. 2022/03/30 현재는 동작을 목표로 한 order에 한가지 item만 가능하도록 구현했다. 추후 수정
 3. Valid Error 검출시 Handling 과 각종 Error 검출 및 Handling
-4. setName setPrice set 방식은 보안상 문제가 될 수 있으니 추후 개선
-5. category item 간 ManyToMany OneToMany ManyToOne 으로 풀어내기
-6. setter 최대한 제거
-7. 유지보수를 위해 Entity 다듬기
-8. update() 부분에서 merge를 dirty checking 방식으로 바꾸기
+4. category item 간 ManyToMany OneToMany ManyToOne 으로 풀어내기
+5. update() 부분에서 merge를 dirty checking 방식으로 바꾸기
