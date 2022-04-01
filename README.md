@@ -30,7 +30,9 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
 중복이 되는 Annotation 설명은 생략 했습니다.
 
 ### member
-
+  회원의 이름, 도시, 거리, 우편번호를 가지고 있다.
+  Order 와 OneToMany 관계를 가지고 있다.
+  
   * MemberController
     * createForm 
       - 회원을 등록하는 Form View를 생성.
