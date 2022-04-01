@@ -30,14 +30,14 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
 중복이 되는 Annotation 설명은 생략 했습니다.
 
 ### member
-  회원의 이름, 도시, 거리, 우편번호를 가지고 있다.
-  Order 와 OneToMany 관계를 가지고 있다.
+    회원의 이름, 도시, 거리, 우편번호를 가지고 있다.
+    Order 와 OneToMany 관계를 가지고 있다.
   
   * MemberController
     * createForm 
-      - 회원을 등록하는 Form View를 생성.
+      - 회원을 등록하는 Form View를 생성한다.
     * create
-      - View에서 입력받은 값들을 해당 회원 Entity에 전달한 뒤 index화면으로 redirect한다.
+      - View에서 입력받은 값들을 해당 회원 Entity에 전달한 뒤 index화면으로 redirect 한다.
       - @PostMapping 통해 path 값 "/members/new" 을 URL 에 매핑
       -  @Valid 를 통해 MemberForm parameter 검증
           control statement 를 통해 Error Handling
@@ -70,41 +70,46 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
 
 ### order
 
+
+* OrderController
+    * createForm 
+      - 주문하는 Form View를 생성.
+    * order
+      - @RequestParam으로 해당 값을 요청해 각 parameter에 넣어주고 Entity에 전달한 뒤 orders로 redirect한다.
+    * list
+      - 상품 목록을 model.addAttribute()를 통해 받아옴
+    * updateItemForm
+      - itemId를 유동적으로 얻어와 Mapping 한 뒤 해당 item 의 값들을 View에 전달한다.
+    * updateItem
+      - updateItemForm에서 얻어온 값들을 수정하면 해당 itemId로 수정된 값을 전달하고 items로 redirect한다.
+
 * Delivery
     
   
   @Id
-    
-    primary key 지정
-  @GeneratedValue
-    
-    함께 사용하므로써 primary key 자동 생성
-    빠른 구현을 위해 Order와 @OneToOne 단방향 상관 관계를 갖고 (양방향의 경우 LAZY로 설정해도 EAGER로 동작할 수 있다.)
-    fetch 전략을 LAZY로 설정하므로써 연관 관계에 있는 Entity 가져오지 않고 Getter 로 접근할 때 가져온다.
-    (해당 project에서는 모든 fetch전략을 LAZY로 설정하였다.)
+   - primary key 지정
+  @GeneratedValue    
+   - 함께 사용하므로써 primary key 자동 생성
+     빠른 구현을 위해 Order와 @OneToOne 단방향 상관 관계를 갖고 (양방향의 경우 LAZY로 설정해도 EAGER로 동작할 수 있다.)
+     fetch 전략을 LAZY로 설정하므로써 연관 관계에 있는 Entity 가져오지 않고 Getter 로 접근할 때 가져온다.
+     (해당 project에서는 모든 fetch전략을 LAZY로 설정했다.)
 
   @Embedded
-    
-    city street zipcode를 address로 묶어 가독성을 높임
+   - city street zipcode를 address로 묶어 가독성을 높였다.
 
-  @Enumerated
-    
-    Enum값을 문자열(EnumType.STRING)로 저장될 수 있도록 선언. 기본적으로 int 값으로 저장됨.
+  @Enumerated 
+   - Enum값을 문자열(EnumType.STRING)로 저장될 수 있도록 선언함. 기본적으로 int 값으로 저장됨.
 
 * Order
   
   @NoArgsConstructor 
-    
-    파라미터가 없는 기본 생성자를 생성
+   - 파라미터가 없는 기본 생성자를 생성
   @Entity @Table
-     
-     Object와 Table Mapping
+   - Object와 Table Mapping
   @Column 
-      
-      Column명 Mapping
+   - Column명 Mapping
   @OntoMany
-      
-      한가지 order에 여러 상품 주문 가능하게 설정 cascade로 상위 Entity에서 하위 Entity로 모든 작업을 전파
+   - 한가지 order에 여러 상품 주문 가능하게 설정 cascade로 상위 Entity에서 하위 Entity로 모든 작업을 전파
 
 * OrderRepository
  
@@ -121,9 +126,9 @@ h2 db를 이용했으며 회원 가입 회원 목록 상품 등록 수정 주문
 * HomeController
   
   @slf4j
-    
-    wrapper 이다. @slf4j 설정에 따라 다른 logging library를 사용할 수 있게 됨.
-    때문에 log4j로 변경하는 등 migration process가 간단해짐
+     
+      wrapper 이다. @slf4j 설정에 따라 다른 logging library를 사용할 수 있게 됨.
+      때문에 log4j로 변경하는 등 migration process가 간단해짐
 
 ### test
   
